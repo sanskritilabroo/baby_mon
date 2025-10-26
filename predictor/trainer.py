@@ -26,7 +26,7 @@ def create_dataloaders(base_dir, batch_size=32, num_workers=4):
         return DataLoader(dataset, batch_size=batch_size, shuffle=shuffle, num_workers=num_workers)
 
     train_loader = make_loader("train", get_train_augs, True)
-    val_loader = make_loader("val", get_preprocessing, False)
+    val_loader = make_loader("valid", get_preprocessing, False)
     test_loader = make_loader("test", get_preprocessing, False)
 
     return train_loader, val_loader,test_loader
