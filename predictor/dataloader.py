@@ -52,10 +52,10 @@ class BabySleepCocoDataset(Dataset):
             for iid in self.image_id_to_name if iid in self.image_to_label
         ]
 
-    def _len_(self):
+    def __len__(self):
         return len(self.samples)
 
-    def _getitem_(self, idx):
+    def __getitem__(self, idx):
         img_path, label = self.samples[idx]
         image = cv2.imread(img_path)
         if image is None:
