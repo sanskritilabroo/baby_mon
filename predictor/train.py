@@ -1,5 +1,5 @@
 import argparse
-from .trainer import train_model
+from trainer import train_model
 
 def main():
     parser = argparse.ArgumentParser(description="Train baby sleep position classifier")
