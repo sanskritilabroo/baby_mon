@@ -47,7 +47,7 @@ def train_model(base_dir="dataset" ,batch_size=32,
     criterion = nn.CrossEntropyLoss()
     optimizer = optim.Adam(model.parameters(), lr=lr, weight_decay=weight_decay)
 
-    best_acc = 0.0
+    best_acc = float('inf')
 
     for epoch in range(num_epochs):
         print(f"\nEpoch {epoch+1}/{num_epochs}")
@@ -88,8 +88,8 @@ def train_model(base_dir="dataset" ,batch_size=32,
         print(f"Train Loss: {train_loss:.4f} | Train Acc: {train_acc:.4f}")
         print(f"Val Loss:   {val_loss:.4f} | Val Acc:   {val_acc:.4f}")
 
-        if val_acc > best_acc:
-            best_acc = val_acc
+        if val_loss < best_acc:
+            best_acc = val_loss
             torch.save(model.state_dict(), "best_model_densenet.pth")
             print("✅ Best model saved")
 
