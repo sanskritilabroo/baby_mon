@@ -29,7 +29,7 @@ def get_preprocessing():
 
 
 class BabySleepCocoDataset(Dataset):
-    def _init_(self, images_dir, annotation_path, transform=None):
+    def __init__(self, images_dir, annotation_path, transform=None):
         self.images_dir = images_dir
         self.transform = transform
 
