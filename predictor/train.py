@@ -1,5 +1,6 @@
 import argparse
 from trainer import train_model
+from posture.OpenPoseKeras.pose_init import pose_init
 
 def main():
     parser = argparse.ArgumentParser(description="Train baby sleep position classifier")
@@ -12,6 +13,8 @@ def main():
     parser.add_argument('--weight_decay', type=float, default=1e-4, help='Weight decay (L2 regularization)')
 
     args = parser.parse_args()
+    
+    pose_init()
 
     train_model(
         base_dir=args.base_dir,

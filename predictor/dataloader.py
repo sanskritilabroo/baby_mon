@@ -8,7 +8,7 @@ from albumentations import (
     ShiftScaleRotate, CoarseDropout
 )
 from albumentations.pytorch import ToTensorV2
-
+from ..posture.OpenPoseKeras.pose_init import pose_process
 
 def get_train_augs():
     return Compose([
@@ -57,7 +57,8 @@ class BabySleepCocoDataset(Dataset):
 
     def __getitem__(self, idx):
         img_path, label = self.samples[idx]
-        image = cv2.imread(img_path)
+        image = pose_process(img_path)
+        #call the process funtion here 
         if image is None:
             raise ValueError(f"Image not found: {img_path}")
         image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
